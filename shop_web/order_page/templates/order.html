@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %} {{system_name}} {% endblock %}
+
+{% block content %}
+<h1><i class="fas fa-cart-plus"></i>{{system_name}}訂購系統</h1>
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+    {{ error_message }}
+</div>
+{% endif %}
+
+{% if info_message %}
+<div class="alert alert-info" role="alert">
+    {{ info_message }}
+</div>
+{% endif %}
+
+
+<form class="order" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input class='add' type="submit" value="+添加訂單">
+</form>
+
+<form class="order" method="post">
+    {{ email_form.as_p }}
+    {% csrf_token %}
+    <input type="hidden" name="_method" value="email">
+    <input class='email' type="submit" value="發送館別資料">
+</form>
+
+<h2>商品列表</h2>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>product_id</th>
+            <th>stock_pcs</th>
+            <th>price</th>
+            <th>shop_id</th>
+            <th>vip</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for this_product in product_list %}
+        <tr>
+            <td>{{ this_product.product_id }}</td>
+            <td>{{ this_product.stock_pcs }}</td>
+            <td>{{ this_product.price }}</td>
+            <td>{{ this_product.shop_id }}</td>
+            <td>{% if this_product.vip %}V{% else %}X{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>訂單紀錄列表</h2>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Order ID</th>
+            <th>product_id</th>
+            <th>qty</th>
+            <th>price</th>
+            <th>shop_id</th>
+            <th>Customer ID</th>
+            <th>取消訂單</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for this_order in order_list %}
+        <tr>
+            <td>{{ this_order.id }}</td>
+            <td>{{ this_order.product_id }}</td>
+            <td>{{ this_order.qty }}</td>
+            <td>{{ this_order.product.price }}</td>
+            <td>{{ this_order.product.shop_id }}</td>
+            <td>{{ this_order.customer_id }}</td>
+            <td>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" id="order_id" name="order_id" value={{ this_order.id }}>
+                    <input class='cancel' type="submit" value="-">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Top3商品銷售量列表</h2>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>名次</th>
+            <th>商品id</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for this_id in top_sell_id_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ this_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

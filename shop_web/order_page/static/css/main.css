@@ -1,0 +1,56 @@
+/* 頁面整體 */
+body {
+    margin: auto;
+    max-width: 60%;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type=submit] {
+    border-radius: 5px;
+    border: 0;
+    width: 90px;
+    height:25px;
+    font-family: Tahoma;
+    color: #fff;
+}
+
+input[type=submit].add {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+input[type=submit].cancel {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    width: 25px;
+}
+
+input[type=submit].email {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    width: 100px;
+}
+
+form.order {
+    padding: 20px;
+    background-color: #d9fae1;
+}
+
+form.order p{
+    margin: 5px
+}
+
+a.btn {
+    padding: 3px 2px;
+    font-size: 16px;
+}

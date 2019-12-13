@@ -6,6 +6,7 @@ from selenium import webdriver
 # 測試的網址，可依據django起的環境更改
 test_url = 'http://127.0.0.1:8000/'
 
+
 class ProductTestCase(TestCase):
     def setUp(self):
         pass
@@ -36,28 +37,28 @@ class OrderTestCase(TestCase):
 
     def test_filter_is_delete(self):
         """測試Order被刪除的項不會顯示"""
-        this_product = Product.objects.create(
-            vip=False, stock_pcs=2, price=1, shop_id='um')
-        this_is_delete_order = Order.objects.create(
-            is_delete=True, product=this_product, qty=1, customer_id=1)
+        # this_product = Product.objects.create(
+        #     vip=False, stock_pcs=2, price=1, shop_id='um')
+        # this_is_delete_order = Order.objects.create(
+        #     is_delete=True, product=this_product, qty=1, customer_id=1)
 
         self.assertEqual(Order.objects.count(), 0)
 
-        this_not_delete_order = Order.objects.create(
-            is_delete=False, product=this_product, qty=1, customer_id=1)
+        # this_not_delete_order = Order.objects.create(
+        #     is_delete=False, product=this_product, qty=1, customer_id=1)
 
         self.assertEqual(Order.objects.count(), 1)
 
     def test_top(self):
         """測試回傳數量前三大的方法"""
-        this_product1 = Product.objects.create(
-            product_id=1, vip=False, stock_pcs=10, price=1, shop_id='um')
-        this_product2 = Product.objects.create(
-            product_id=2, vip=False, stock_pcs=10, price=1, shop_id='um')
-        this_product3 = Product.objects.create(
-            product_id=3, vip=False, stock_pcs=10, price=1, shop_id='um')
-        this_product4 = Product.objects.create(
-            product_id=4, vip=False, stock_pcs=10, price=1, shop_id='um')
+        # this_product1 = Product.objects.create(
+        #     product_id=1, vip=False, stock_pcs=10, price=1, shop_id='um')
+        # this_product2 = Product.objects.create(
+        #     product_id=2, vip=False, stock_pcs=10, price=1, shop_id='um')
+        # this_product3 = Product.objects.create(
+        #     product_id=3, vip=False, stock_pcs=10, price=1, shop_id='um')
+        # this_product4 = Product.objects.create(
+        #     product_id=4, vip=False, stock_pcs=10, price=1, shop_id='um')
         Order.objects.create(product_id=1, qty=5, customer_id=1)
         # this_order1_2 = Order.objects.create(
         #     product_id=1, qty=2, customer_id=2)
@@ -103,6 +104,7 @@ class UrlRouterTestCase(TestCase):
     def test_delete_order(self):
         """測試刪除Order資料"""
         pass
+
 
 # 注意Selenium測試需要下載Firefox driver
 class SeleniumTestCase(TestCase):

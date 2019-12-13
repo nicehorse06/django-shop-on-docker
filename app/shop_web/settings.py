@@ -146,9 +146,9 @@ EMAIL_PORT = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
-try:
-    from shop_web.settings_local import *
-    email = settings_local.EMAIL_HOST_USER
-    print('import EMAIL_HOST_USER from settings_local:', email)
-except:
-    pass
+# try:
+#     from shop_web.settings_local import *
+#     email = settings_local.EMAIL_HOST_USER
+#     print('import EMAIL_HOST_USER from settings_local:', email)
+# except:
+#     pass

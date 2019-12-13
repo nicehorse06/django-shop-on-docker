@@ -76,7 +76,7 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         this_product = self.product
         # Order的更新要計算產品庫存
-        if self.is_delete == True:
+        if self.is_delete:
             this_product.stock_pcs += self.qty
         else:
             this_product.stock_pcs -= self.qty

@@ -107,7 +107,7 @@ class OrderView(View):
 
     # 發信功能，todo 可再多檢查
     def shop_email(self, request):
-        this_form = ShopEmailForm(request.POST)
+        # this_form = ShopEmailForm(request.POST)
         this_recipient_email = request.POST.get('recipient_email')
         send_email.delay(this_recipient_email)
         self.info_message = '郵件已發送!'

@@ -3,6 +3,9 @@
 * python版本為3.6.8
 * Django版本為2.2.8
 
+## todo 
+* 加入 redis 和 celery
+
 ## 參考資料來源
 [Dockerizing Django with Postgres, Gunicorn, and Nginx](https://testdriven.io/dockerizing-django-with-postgres-gunicorn-and-nginx)
 * 這篇文章的原始碼：[testdrivenio/django-on-docker](https://github.com/testdrivenio/django-on-docker)

@@ -17,10 +17,15 @@ class OrderPostForm(forms.Form):
         if this_field:
             from .models import Product
             choices_value = [('', 'Select Product')]
-            choices_value.extend(Product.objects.values_list(
+            choices_value.extend(Product.objects.order_by('product_id').values_list(
                 'product_id', 'product_id'))
             this_field.choices = choices_value
 
 
 class ShopEmailForm(forms.Form):
     recipient_email = forms.EmailField(required=True, label=u'收件email')
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

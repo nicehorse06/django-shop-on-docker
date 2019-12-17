@@ -24,12 +24,12 @@
         <input class='add' type="submit" value="+添加訂單">
     </form>
 
-    <form method="post">
+    <!-- <form method="post">
         {{ email_form.as_p }}
         {% csrf_token %}
         <input type="hidden" name="_method" value="email">
         <input class='email' type="submit" value="發送館別資料">
-    </form>
+    </form> -->
     <form method="post">
             {% csrf_token %}
             <input type="hidden" name="_method" value="logout">

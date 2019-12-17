@@ -3,9 +3,6 @@
 * python版本為3.6.8
 * Django版本為2.2.8
 
-## todo 
-* 加入 redis 和 celery
-
 ## 參考資料來源
 [Dockerizing Django with Postgres, Gunicorn, and Nginx](https://testdriven.io/dockerizing-django-with-postgres-gunicorn-and-nginx)
 * 這篇文章的原始碼：[testdrivenio/django-on-docker](https://github.com/testdrivenio/django-on-docker)
@@ -102,6 +99,9 @@ stdout_logfile=/var/log/django-shop-order-demo.out.log
 * redis 自動重啟
 * sudo supervisord -c /etc/supervisor/supervisord.conf
 * sudo supervisord -c /etc/supervisor/celeryd.conf
+
+## todo 
+* 加入 redis 和 celery 到docker中
 
 ### 參考資料
 * [Testing in Django](https://docs.djangoproject.com/en/2.2/topics/testing/)

@@ -31,8 +31,6 @@ docker-compose -f docker-compose.prod.yml up -d --build
 docker-compose -f docker-compose.prod.yml down -v
 
 ##### 在container中下建立admin的指令
-* docker-compose exec web python manage.py admin
-
 * docker-compose exec web python manage.py createsuperuser
 
 ##### 查看log
